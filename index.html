@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Simple GitHub Pages Site</title>
+  <meta name="description" content="A clean single-page site ready to publish on GitHub Pages" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <style>
+    :root{--accent:#0f62fe;--muted:#667085;--bg:#f7f8fb;--card:#ffffff}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#0f1724;background:linear-gradient(180deg, #fbfdff 0%, var(--bg) 100%);-webkit-font-smoothing:antialiased}
+    header{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;max-width:1100px;margin:0 auto}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:40px;height:40px;background:linear-gradient(135deg,var(--accent),#7c3aed);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{margin-left:18px;text-decoration:none;color:var(--muted);font-weight:600}
+    .hero{max-width:1100px;margin:28px auto;padding:36px;border-radius:14px;background:var(--card);display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;box-shadow:0 6px 20px rgba(15,23,36,0.06)}
+    h1{margin:0 0 8px;font-size:28px}
+    p.lead{margin:0;color:var(--muted);line-height:1.5}
+    .cta{margin-top:18px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-ghost{background:transparent;border:2px solid #e6eefc;color:var(--accent)}
+    .card{background:linear-gradient(180deg,#fcfdff,white);padding:18px;border-radius:12px}
+    .features{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+    .feature{padding:12px;border-radius:10px;background:#f8fafc;border:1px solid #eef2ff}
+    footer{max-width:1100px;margin:20px auto;padding:18px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid #e6eefc;font-size:14px}
+    @media (max-width:880px){.hero{grid-template-columns:1fr;padding:18px}.features{grid-template-columns:1fr}.brand span{display:none}.logo{width:36px;height:36px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">MG</div>
+      <span style="font-weight:700">MySite</span>
+    </div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="hero" role="main">
+    <section>
+      <h1>Simple, fast, and ready for GitHub Pages</h1>
+      <p class="lead">This single-file template is responsive, accessible, and easy to customize. Replace the text, swap colors, or add sections — then publish straight to GitHub Pages.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="#features">See features</a>
+      </div>
+
+      <div id="features" style="margin-top:20px">
+        <div class="card">
+          <div class="features">
+            <div class="feature"><strong>Responsive</strong><div style="color:var(--muted);font-size:13px">Looks great on phones and desktops.</div></div>
+            <div class="feature"><strong>Lightweight</strong><div style="color:var(--muted);font-size:13px">Single HTML file — fast to load.</div></div>
+            <div class="feature"><strong>Accessible</strong><div style="color:var(--muted);font-size:13px">Semantic markup and clear contrast.</div></div>
+            <div class="feature"><strong>Customizable</strong><div style="color:var(--muted);font-size:13px">Change styles or add more pages easily.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card">
+      <h3 id="about">About this template</h3>
+      <p style="color:var(--muted);font-size:14px">Perfect starter for a business, portfolio, or project page. No build step required — just publish the file.</p>
+      <hr/>
+      <h4 style="margin:8px 0 6px">Contact</h4>
+      <form id="contact" onsubmit="handleContact(event)">
+        <input id="name" required placeholder="Your name" />
+        <input id="email" type="email" required placeholder="Email" />
+        <textarea id="message" rows="4" placeholder="Message"></textarea>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <button class="btn btn-primary" type="submit">Send</button>
+          <button class="btn" type="button" onclick="resetForm()">Reset</button>
+        </div>
+        <div id="status" style="margin-top:8px;color:var(--muted);font-size:13px"></div>
+      </form>
+    </aside>
+  </main>
+
+  <footer>
+    <div>© <span id="year"></span> MySite</div>
+    <div>Built with ❤️ — Deploy on GitHub Pages</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function handleContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const status = document.getElementById('status');
+      status.textContent = `Thanks ${name || 'there'} — this is a demo form (no backend).`;
+      // If you have a backend or third-party form service, submit here.
+    }
+    function resetForm(){document.getElementById('contact').reset();document.getElementById('status').textContent=''}
+  </script>
+</body>
+</html>
